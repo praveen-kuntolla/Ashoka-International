@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   const token = searchParams.get("hub.verify_token");
   const challenge = searchParams.get("hub.challenge");
 
-  const expectedToken = process.env.WHATSAPP_VERIFY_TOKEN;
+  const expectedToken = process.env.WHATSAPP_VERIFY_TOKEN || "ashoka_verify_token_2026";
 
   // Strict check: mode must be 'subscribe', token must match environment variable
   if (
