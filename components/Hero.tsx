@@ -15,7 +15,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({
   heroTitle = "ASHOKA INTERNATIONAL",
   heroSubtitle = "Elevating Corporate Operations & Global Career Horizons from Nizamabad to the World.",
-  phoneNumber = "+91 98666 03905",
+  phoneNumber = "+94 74231 0280",
   isLgbtqFriendly = true,
   onExploreClick,
 }) => {

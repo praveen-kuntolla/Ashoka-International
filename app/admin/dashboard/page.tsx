@@ -114,12 +114,18 @@ export default function AdminDashboard() {
     'req-3': 'HR',
   });
 
-  // Hydrate companyInfo from localStorage on mount
+  // Hydrate companyInfo from localStorage on mount with auto-migration
   React.useEffect(() => {
     try {
       const saved = localStorage.getItem('ashoka-companyInfo');
       if (saved) {
-        setCompanyInfo(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed.whatsappNumber?.includes('98666') || parsed.phoneNumber?.includes('98666')) {
+          parsed.phoneNumber = '+94 74231 0280';
+          parsed.whatsappNumber = '94742310280';
+          localStorage.setItem('ashoka-companyInfo', JSON.stringify(parsed));
+        }
+        setCompanyInfo(parsed);
       }
     } catch {}
   }, []);
@@ -1386,7 +1392,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between pb-4 border-b border-sky-800/40">
                     <div>
                       <div className="font-bold text-white text-sm">WhatsApp Business Payload Forwarder</div>
-                      <div className="text-sky-300/80">Route candidate 1-click apply payloads to: +91 {companyInfo.whatsappNumber}</div>
+                      <div className="text-sky-300/80">Route candidate 1-click apply payloads to: +{companyInfo.whatsappNumber}</div>
                     </div>
                     <button
                       onClick={() => {

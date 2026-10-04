@@ -13,7 +13,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   companyName = "ASHOKA INTERNATIONAL",
-  phoneNumber = "+91 98666 03905",
+  phoneNumber = "+94 74231 0280",
   isLgbtqFriendly = true,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ companyInfo }) => {
     {
       name: 'WhatsApp',
       icon: MessageCircle,
-      url: `https://wa.me/${companyInfo?.whatsappNumber ?? '919866603905'}?text=Hello%20Ashoka%20International,`,
+      url: `https://wa.me/${companyInfo?.whatsappNumber ?? '94742310280'}?text=Hello%20Ashoka%20International,`,
       color: 'hover:bg-emerald-600 hover:text-white',
     },
     {
@@ -74,8 +74,8 @@ export const Footer: React.FC<FooterProps> = ({ companyInfo }) => {
                 <PhoneCall className="w-5 h-5 text-sky-400 shrink-0" />
                 <div>
                   <span className="font-semibold text-white">Phone Inquiry: </span>
-                  <a href={`tel:${companyInfo?.phoneNumber ?? '+919866603905'}`} className="text-sky-300 hover:underline">
-                    {companyInfo?.phoneNumber ?? '+91 98666 03905'}
+                  <a href={`tel:${companyInfo?.phoneNumber ?? '+94742310280'}`} className="text-sky-300 hover:underline">
+                    {companyInfo?.phoneNumber ?? '+94 74231 0280'}
                   </a>
                 </div>
               </div>

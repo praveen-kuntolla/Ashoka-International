@@ -12,7 +12,7 @@ interface JobCardProps {
 
 export const JobCard: React.FC<JobCardProps> = ({
   job,
-  whatsappNumber = "919866603905",
+  whatsappNumber = "94742310280",
 }) => {
   const encodedTitle = encodeURIComponent(job?.title ?? 'Position');
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello%20Ashoka%20International,%20I%20am%20interested%20in%20applying%20for%20the%20${encodedTitle}%20position.`;

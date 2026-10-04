@@ -23,7 +23,13 @@ export default function HomePage() {
       try {
         const saved = localStorage.getItem('ashoka-companyInfo');
         if (saved) {
-          setCompanyInfo(JSON.parse(saved));
+          const parsed = JSON.parse(saved);
+          if (parsed.whatsappNumber?.includes('98666') || parsed.phoneNumber?.includes('98666')) {
+            parsed.phoneNumber = '+94 74231 0280';
+            parsed.whatsappNumber = '94742310280';
+            localStorage.setItem('ashoka-companyInfo', JSON.stringify(parsed));
+          }
+          setCompanyInfo(parsed);
         }
       } catch {}
     };
