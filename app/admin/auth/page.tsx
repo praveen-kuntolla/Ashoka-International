@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Mail, ArrowRight, AlertTriangle, CheckCircle, Shield, User, KeyRound, Info } from 'lucide-react';
+import { Lock, Mail, ArrowRight, AlertTriangle, CheckCircle, Shield, User, KeyRound } from 'lucide-react';
 import Link from 'next/link';
 
 interface CorporateAccount {
@@ -38,8 +38,8 @@ export default function AdminAuthPage() {
   const router = useRouter();
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('admin@ashokainternational.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [authStatus, setAuthStatus] = useState<'idle' | 'success' | 'failure'>('idle');
@@ -393,7 +393,7 @@ export default function AdminAuthPage() {
                       if (errorMessage) setErrorMessage('');
                     }}
                     className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-sky-900/50 border border-sky-700/60 text-white text-sm focus:border-sky-400 focus:outline-none"
-                    placeholder="e.g. Ramesh Kumar"
+                    placeholder="Enter your full name"
                   />
                 </div>
               </div>
@@ -415,7 +415,7 @@ export default function AdminAuthPage() {
                     if (errorMessage) setErrorMessage('');
                   }}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-sky-900/50 border border-sky-700/60 text-white text-sm focus:border-sky-400 focus:outline-none"
-                  placeholder="admin@ashokainternational.com"
+                  placeholder="Enter your corporate email"
                 />
               </div>
             </div>
@@ -436,7 +436,7 @@ export default function AdminAuthPage() {
                     if (errorMessage) setErrorMessage('');
                   }}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-sky-900/50 border border-sky-700/60 text-white text-sm focus:border-sky-400 focus:outline-none"
-                  placeholder="••••••••"
+                  placeholder="Enter your password"
                 />
               </div>
               {authMode === 'signup' && (
@@ -461,7 +461,7 @@ export default function AdminAuthPage() {
                       if (errorMessage) setErrorMessage('');
                     }}
                     className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-sky-900/50 border border-sky-700/60 text-white text-sm focus:border-sky-400 focus:outline-none"
-                    placeholder="••••••••"
+                    placeholder="Confirm your password"
                   />
                 </div>
               </div>
@@ -483,51 +483,6 @@ export default function AdminAuthPage() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
-
-          {/* Quick Demo Credentials Helper */}
-          {authMode === 'signin' && (
-            <div className="p-3.5 rounded-2xl bg-sky-900/30 border border-sky-800/40 text-[11px] text-sky-200/80 space-y-2">
-              <div className="font-bold text-sky-300 flex items-center gap-1.5">
-                <Info className="w-3.5 h-3.5 text-sky-400" />
-                <span>Authorized Demo Credentials:</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('admin@ashokainternational.com');
-                    setPassword('admin123');
-                    setErrorMessage('');
-                  }}
-                  className="px-2.5 py-1 rounded-xl bg-sky-900/70 border border-sky-700/60 text-sky-200 hover:text-white hover:border-sky-400 text-[10px] font-semibold transition-colors"
-                >
-                  Admin: <code className="text-emerald-400 font-mono">admin123</code>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('manager@ashokainternational.com');
-                    setPassword('manager123');
-                    setErrorMessage('');
-                  }}
-                  className="px-2.5 py-1 rounded-xl bg-sky-900/70 border border-sky-700/60 text-sky-200 hover:text-white hover:border-sky-400 text-[10px] font-semibold transition-colors"
-                >
-                  Manager: <code className="text-emerald-400 font-mono">manager123</code>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('hr@ashokainternational.com');
-                    setPassword('hr123');
-                    setErrorMessage('');
-                  }}
-                  className="px-2.5 py-1 rounded-xl bg-sky-900/70 border border-sky-700/60 text-sky-200 hover:text-white hover:border-sky-400 text-[10px] font-semibold transition-colors"
-                >
-                  HR: <code className="text-emerald-400 font-mono">hr123</code>
-                </button>
-              </div>
-            </div>
-          )}
 
           <div className="text-center pt-2">
             <Link href="/" className="text-xs text-sky-300 hover:underline">
