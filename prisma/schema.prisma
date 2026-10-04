@@ -1,0 +1,76 @@
+// This is your Prisma schema file for ASHOKA INTERNATIONAL
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  HR
+}
+
+enum JobStatus {
+  ACTIVE
+  INACTIVE
+  DRAFT
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(HR)
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Job {
+  id           String    @id @default(cuid())
+  title        String
+  department   String
+  location     String
+  type         String    @default("Full-Time") // Full-Time, Part-Time, Contract
+  experience   String    @default("0-2 Years")
+  salary       String?
+  requirements String    // JSON string array or newline separated list
+  description  String
+  status       JobStatus @default(ACTIVE)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  author    String
+  role      String?  @default("Client")
+  rating    Float    @default(5.0)
+  comment   String
+  verified  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model CompanyInfo {
+  id               String   @id @default(cuid())
+  companyName      String   @default("ASHOKA INTERNATIONAL")
+  category         String   @default("Corporate Office")
+  address          String   @default("opp. KAKATIYA KOC SCHOOL, Subhash Nagar, Nizamabad, Telangana 503002, India")
+  phoneNumber      String   @default("+91 98666 03905")
+  whatsappNumber   String   @default("919866603905")
+  hours            String   @default("Opens 10:00 AM Mon")
+  rating           Float    @default(4.6)
+  reviewCount      Int      @default(5)
+  isLgbtqFriendly  Boolean  @default(true)
+  overview         String   @default("Ashoka International is a premier corporate office and placement consultancy headquartered in Nizamabad, Telangana. Delivering world-class corporate operations, global staffing solutions, and inclusive workplace leadership.")
+  heroTitle        String   @default("ASHOKA INTERNATIONAL")
+  heroSubtitle     String   @default("Elevating Corporate Operations & Global Career Horizons from Nizamabad to the World.")
+  updatedAt        DateTime @updatedAt
+}

@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * DYNAMIC THEME SYSTEM FOR ASHOKA INTERNATIONAL
+ * Default Sky Theme (Antigravity Sky Blue)
+ */
+:root,
+.theme-accent-sky {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 8, 47, 73;
+  --background-end-rgb: 12, 74, 110;
+
+  --brand-50: 240 249 255;
+  --brand-100: 224 242 254;
+  --brand-200: 186 230 253;
+  --brand-300: 125 211 252;
+  --brand-400: 56 189 248;
+  --brand-500: 14 165 233;
+  --brand-600: 2 132 199;
+  --brand-700: 3 105 161;
+  --brand-800: 7 89 133;
+  --brand-900: 12 74 110;
+  --brand-950: 8 47 73;
+
+  --brand-glow: rgba(56, 189, 248, 0.45);
+  --brand-shadow: rgba(14, 165, 233, 0.18);
+  --brand-shadow-hover: rgba(14, 165, 233, 0.35);
+}
+
+/* Emerald Inclusive Palette */
+.theme-accent-emerald,
+[data-theme-accent="emerald"] {
+  --background-start-rgb: 2, 44, 34;
+  --background-end-rgb: 6, 78, 59;
+
+  --brand-50: 236 253 245;
+  --brand-100: 209 250 229;
+  --brand-200: 167 243 208;
+  --brand-300: 110 231 183;
+  --brand-400: 52 211 153;
+  --brand-500: 16 185 129;
+  --brand-600: 5 150 105;
+  --brand-700: 4 120 87;
+  --brand-800: 6 95 70;
+  --brand-900: 6 78 59;
+  --brand-950: 2 44 34;
+
+  --brand-glow: rgba(52, 211, 153, 0.5);
+  --brand-shadow: rgba(16, 185, 129, 0.22);
+  --brand-shadow-hover: rgba(16, 185, 129, 0.4);
+}
+
+/* Indigo Corporate Palette */
+.theme-accent-indigo,
+[data-theme-accent="indigo"] {
+  --background-start-rgb: 30, 27, 75;
+  --background-end-rgb: 49, 46, 129;
+
+  --brand-50: 238 242 255;
+  --brand-100: 224 231 255;
+  --brand-200: 199 210 254;
+  --brand-300: 165 180 252;
+  --brand-400: 129 140 248;
+  --brand-500: 99 102 241;
+  --brand-600: 79 70 229;
+  --brand-700: 67 56 202;
+  --brand-800: 55 48 163;
+  --brand-900: 49 46 129;
+  --brand-950: 30 27 75;
+
+  --brand-glow: rgba(129, 140, 248, 0.5);
+  --brand-shadow: rgba(99, 102, 241, 0.22);
+  --brand-shadow-hover: rgba(99, 102, 241, 0.4);
+}
+
+/* Amber Sunset Palette */
+.theme-accent-amber,
+[data-theme-accent="amber"] {
+  --background-start-rgb: 69, 26, 3;
+  --background-end-rgb: 120, 53, 15;
+
+  --brand-50: 255 251 235;
+  --brand-100: 254 243 199;
+  --brand-200: 253 230 138;
+  --brand-300: 252 211 77;
+  --brand-400: 251 191 36;
+  --brand-500: 245 158 11;
+  --brand-600: 217 119 6;
+  --brand-700: 180 83 9;
+  --brand-800: 146 64 14;
+  --brand-900: 120 53 15;
+  --brand-950: 69 26 3;
+
+  --brand-glow: rgba(251, 191, 36, 0.5);
+  --brand-shadow: rgba(245, 158, 11, 0.25);
+  --brand-shadow-hover: rgba(245, 158, 11, 0.42);
+}
+
+/* High Contrast Mode */
+.theme-contrast-high,
+[data-theme-contrast="high"] {
+  --brand-950: 2 6 23;
+  --brand-900: 15 23 42;
+  --brand-800: 30 41 59;
+}
+
+.theme-contrast-high *,
+[data-theme-contrast="high"] * {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+/* Antigravity Glassmorphism & Custom Glow Utilities */
+.glass-panel {
+  background: rgba(var(--brand-900), 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--brand-300), 0.2);
+}
+
+.shadow-glow-sky {
+  box-shadow: 0 0 25px var(--brand-glow);
+}
+
+.shadow-antigravity {
+  box-shadow: 0 20px 40px -15px var(--brand-shadow);
+}
+
+.shadow-antigravity-hover {
+  box-shadow: 0 30px 60px -12px var(--brand-shadow-hover);
+}
+
+/* Custom Scrollbar for Smooth Flight Feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--brand-950));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--brand-600));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--brand-400));
+}
+
+/* Light Mode Overrides */
+html.light body,
+html.light [data-theme-mode="light"] {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-sky-950 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-sky-900\/90,
+html.light .bg-sky-900\/80,
+html.light .bg-sky-900\/60,
+html.light .bg-sky-900\/40,
+html.light .bg-sky-900\/30,
+html.light .bg-sky-900\/20 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-sky-300,
+html.light .text-sky-200 {
+  color: #334155 !important;
+}
